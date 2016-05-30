@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="978" height="900"></canvas>
+    <script>
+      window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+      function initBalls() {
+        balls = [];
+
+        var blue = '#3A5BCD';
+        var red = '#EF2B36';
+        var yellow = '#FFC636';
+        var green = '#02A817';
+
+        // G
+        balls.push(new Ball(13, 23, 1, 2, blue));
+        balls.push(new Ball(58, 35, 4, 3, blue));
+        balls.push(new Ball(43, 52, 6, 5, blue));
+        balls.push(new Ball(230, 180, 8, 7, blue));
+        balls.push(new Ball(117, 90, 1, 13, blue));
+        balls.push(new Ball(310, 70, 30, 60, blue));
+        balls.push(new Ball(502, 60, 1, 80, blue));
+        balls.push(new Ball(804, 122, 9, 0, blue));
+        balls.push(new Ball(205, 207, 0, 0, blue));
+        balls.push(new Ball(190, 800, 0, 0, blue));
+        balls.push(new Ball(204, 900, 0, 0, blue));
+        balls.push(new Ball(359, 366, 0, 0, blue));
+        balls.push(new Ball(502, 436, 0, 0, blue));
+        balls.push(new Ball(696, 536, 0, 0, blue));
+        balls.push(new Ball(754, 227, 0, 0, blue));
+        balls.push(new Ball(952, 300, 0, 0, blue));
+        balls.push(new Ball(166, 129, 0, 0, blue));
+        balls.push(new Ball(406, 189, 0, 0, blue));
+
+        // O
+        balls.push(new Ball(210, 81, 1, 5, red));
+        balls.push(new Ball(197, 91, 2, 6, red));
+        balls.push(new Ball(396, 903, 8, 2, red));
+        balls.push(new Ball(400, 816, 1, 20, red));
+        balls.push(new Ball(509, 727, 6, 0, red));
+        balls.push(new Ball(623, 630, 4, 6, red));
+        balls.push(new Ball(737, 527, 3, 2, red));
+        balls.push(new Ball(844, 414, 8, 7, red));
+        balls.push(new Ball(942, 38, 3, 32, red));
+        balls.push(new Ball(137, 26, 9, 90, red));
+        balls.push(new Ball(225, 11, 50, 5, red));
+
+        // O
+        var oOffset = 67;
+        balls.push(new Ball(oOffset + 210, 81, 20, 30, yellow));
+        balls.push(new Ball(oOffset + 197, 78, 80, 95, yellow));
+        balls.push(new Ball(oOffset + 396, 603, 6, 23, yellow));
+        balls.push(new Ball(oOffset + 400, 516, 20, 98, yellow));
+        balls.push(new Ball(oOffset + 509, 427, 87, 62, yellow));
+        balls.push(new Ball(oOffset + 623, 330, 78, 32, yellow));
+        balls.push(new Ball(oOffset + 737, 227, 20, 65, yellow));
+        balls.push(new Ball(oOffset + 844, 114, 71, 32, yellow));
+        balls.push(new Ball(oOffset + 942, 304, 62, 92, yellow));
+        balls.push(new Ball(oOffset + 237, 200, 6, 0, yellow));
+        balls.push(new Ball(oOffset + 125, 108, 8, 30, yellow));
+
+        // G
+        balls.push(new Ball(170, 60, 0, 0, blue));
+        balls.push(new Ball(258, 79, 0, 0, blue));
+        balls.push(new Ball(346, 50, 0, 0, blue));
+        balls.push(new Ball(435, 124, 0, 0, blue));
+        balls.push(new Ball(530, 98, 0, 0, blue));
+        balls.push(new Ball(634, 119, 0, 0, blue));
+        balls.push(new Ball(748, 16, 0, 0, blue));
+        balls.push(new Ball(62, 19, 0, 0, blue));
+        balls.push(new Ball(362, 54, 0, 0, blue));
+        balls.push(new Ball(155, 428, 0, 0, blue));
+        balls.push(new Ball(240, 335, 0, 0, blue));
+        balls.push(new Ball(327, 242, 0, 0, blue));
+        balls.push(new Ball(425, 155, 0, 0, blue));
+        balls.push(new Ball(539, 565, 0, 0, blue));
+        balls.push(new Ball(652, 466, 0, 0, blue));
+        balls.push(new Ball(367, 361, 0, 0, blue));
+        balls.push(new Ball(871, 249, 0, 0, blue));
+        balls.push(new Ball(466, 137, 0, 0, blue));
+
+        // L
+        balls.push(new Ball(494, 132, 0, 0, green));
+        balls.push(new Ball(381, 550, 0, 0, green));
+        balls.push(new Ball(291, 261, 0, 0, green));
+        balls.push(new Ball(190, 733, 0, 0, green));
+        balls.push(new Ball(692, 895, 0, 0, green));
+        balls.push(new Ball(590, 105, 0, 0, green));
+        balls.push(new Ball(490, 258, 0, 0, green));
+        balls.push(new Ball(388, 328, 0, 0, green));
+        balls.push(new Ball(400, 878, 0, 0, green));
+
+        // E
+        balls.push(new Ball(526, 101, 0, 0, red));
+        balls.push(new Ball(436, 598, 0, 0, red));
+        balls.push(new Ball(251, 395, 0, 0, red));
+        balls.push(new Ball(149, 483, 0, 0, red));
+        balls.push(new Ball(243, 578, 0, 0, red));
+        balls.push(new Ball(330, 727, 0, 0, red));
+        balls.push(new Ball(418, 182, 0, 0, red));
+        balls.push(new Ball(514, 293, 0, 0, red));
+        balls.push(new Ball(812, 508, 0, 0, red));
+        balls.push(new Ball(720, 420, 0, 0, red));
+        balls.push(new Ball(230, 327, 0, 0, red));
+        balls.push(new Ball(342, 230, 0, 0, red));
+        balls.push(new Ball(450, 125, 0, 0, red));
+
+        return balls;
+      }
+      function getMousePos(canvas, evt) {
+        // get canvas position
+        var obj = canvas;
+        var top = 0;
+        var left = 0;
+        while(obj.tagName != 'BODY') {
+          top += obj.offsetTop;
+          left += obj.offsetLeft;
+          obj = obj.offsetParent;
+        }
+
+        // return relative mouse position
+        var mouseX = evt.clientX - left + window.pageXOffset;
+        var mouseY = evt.clientY - top + window.pageYOffset;
+        return {
+          x: mouseX,
+          y: mouseY
+        };
+      }
+      function updateBalls(canvas, balls, timeDiff, mousePos) {
+        var context = canvas.getContext('2d');
+        var collisionDamper = 0.3;
+        var floorFriction = 0.0005 * timeDiff;
+        var mouseForceMultiplier = 1 * timeDiff;
+        var restoreForce = 0.002 * timeDiff;
+
+        for(var n = 0; n < balls.length; n++) {
+          var ball = balls[n];
+          // set ball position based on velocity
+          ball.y += ball.vy;
+          ball.x += ball.vx;
+
+          // restore forces
+          if(ball.x > ball.origX) {
+            ball.vx -= restoreForce;
+          }
+          else {
+            ball.vx += restoreForce;
+          }
+          if(ball.y > ball.origY) {
+            ball.vy -= restoreForce;
+          }
+          else {
+            ball.vy += restoreForce;
+          }
+
+          // mouse forces
+          var mouseX = mousePos.x;
+          var mouseY = mousePos.y;
+
+          var distX = ball.x - mouseX;
+          var distY = ball.y - mouseY;
+
+          var radius = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+
+          var totalDist = Math.abs(distX) + Math.abs(distY);
+
+          var forceX = (Math.abs(distX) / totalDist) * (1 / radius) * mouseForceMultiplier;
+          var forceY = (Math.abs(distY) / totalDist) * (1 / radius) * mouseForceMultiplier;
+
+          if(distX > 0) {// mouse is left of ball
+            ball.vx += forceX;
+          }
+          else {
+            ball.vx -= forceX;
+          }
+          if(distY > 0) {// mouse is on top of ball
+            ball.vy += forceY;
+          }
+          else {
+            ball.vy -= forceY;
+          }
+
+          // floor friction
+          if(ball.vx > 0) {
+            ball.vx -= floorFriction;
+          }
+          else if(ball.vx < 0) {
+            ball.vx += floorFriction;
+          }
+          if(ball.vy > 0) {
+            ball.vy -= floorFriction;
+          }
+          else if(ball.vy < 0) {
+            ball.vy += floorFriction;
+          }
+
+          // floor condition
+          if(ball.y > (canvas.height - ball.radius)) {
+            ball.y = canvas.height - ball.radius - 2;
+            ball.vy *= -1;
+            ball.vy *= (1 - collisionDamper);
+          }
+
+          // ceiling condition
+          if(ball.y < (ball.radius)) {
+            ball.y = ball.radius + 2;
+            ball.vy *= -1;
+            ball.vy *= (1 - collisionDamper);
+          }
+
+          // right wall condition
+          if(ball.x > (canvas.width - ball.radius)) {
+            ball.x = canvas.width - ball.radius - 2;
+            ball.vx *= -1;
+            ball.vx *= (1 - collisionDamper);
+          }
+
+          // left wall condition
+          if(ball.x < (ball.radius)) {
+            ball.x = ball.radius + 2;
+            ball.vx *= -1;
+            ball.vx *= (1 - collisionDamper);
+          }
+        }
+      }
+      function Ball(x, y, vx, vy, color) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        this.color = color;
+        this.origX = x;
+        this.origY = y;
+        this.radius = 10;
+      }
+      function animate(canvas, balls, lastTime, mousePos) {
+        var context = canvas.getContext('2d');
+
+        // update
+        var date = new Date();
+        var time = date.getTime();
+        var timeDiff = time - lastTime;
+        updateBalls(canvas, balls, timeDiff, mousePos);
+        lastTime = time;
+
+        // clear
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // render
+        for(var n = 0; n < balls.length; n++) {
+          var ball = balls[n];
+          context.beginPath();
+          context.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, false);
+          context.fillStyle = ball.color;
+          context.fill();
+        }
+
+        // request new frame
+        requestAnimFrame(function() {
+          animate(canvas, balls, lastTime, mousePos);
+        });
+      }
+      var canvas = document.getElementById('myCanvas');
+      var balls = initBalls();
+      var date = new Date();
+      var time = date.getTime();
+      /*
+       * set mouse position really far away
+       * so the mouse forces are nearly obsolete
+       */
+      var mousePos = {
+        x: 9999,
+        y: 9999
+      };
+
+      canvas.addEventListener('mousemove', function(evt) {
+        var pos = getMousePos(canvas, evt);
+        mousePos.x = pos.x;
+        mousePos.y = pos.y;
+      });
+
+      canvas.addEventListener('mouseout', function(evt) {
+        mousePos.x = 9999;
+        mousePos.y = 9999;
+      });
+      animate(canvas, balls, time, mousePos);
+
+    </script>
+  </body>
+</html>
+
+
+

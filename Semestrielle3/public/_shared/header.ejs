@@ -1,0 +1,71 @@
+<!-- Header Wrapper -->
+<div id="header-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="12u">
+			
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+						
+							<!-- Logo -->
+								<h1><a href="/new" id="logo">Un site quelconque...</a></h1>
+							
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="<% if (current.source == 'index') { %>current_page_item <% } %>"><a href="/new">Maison</a></li>
+										<li>
+											<span>dropdown</span>
+											<ul>
+											<span>Jeu</span>
+													<ul>
+														<li><a href="/jeu">Jeu</a></li>
+														<li><a href="/mario">Mario world</a></li>
+														<li><a href="/Zelda">The ledgend of Zelda</a></li>
+														<li><a href="/Cercles">cercles</a></li>
+														
+													</ul>
+												
+												<li>
+													<span>Film</span>
+													<ul>
+														<li><a href="/marvel">Marvel comics</a></li>
+														<li><a href="/disney">Walt Disney</a></li>
+														<li><a href="/stickman">Stickman video</a></li>
+														<li><a href="#">Hits Youtube????</a></li>
+													</ul>
+												</li>
+												<li>
+													<span>Betises</span>
+													<ul>
+														<li><a href="/WC">WC</a></li>
+														<li><a href="diapo.ejs">Error 404??</a></li>
+													</ul>
+												</li>
+												
+												
+											</ul>
+										</li>
+										<li class="<% if (current.source == 'left-sidebar') { %>current_page_item <% } %>"><a href="/Test.html">Ailleurs</a></li>
+										<li class="<% if (current.source == 'right-sidebar') { %>current_page_item <% } %>"><a href="/corruption.ejs">Corruption</a></li>
+										<li class="<% if (current.source == 'no-sidebar') { %>current_page_item <% } %>"><a href="/no-sidebar">avancee du projet</a></li>
+									</ul>
+								</nav>
+						
+						</div>
+					</header>
+
+					<% if (current.source == "new") { %>
+						<!-- Banner -->
+						<div id="banner">
+							<h2><strong>ZeroFour:</strong> A free responsive site template<br />
+							built on HTML5 and CSS3 by <a href="http://html5up.net">HTML5 UP</a></h2>
+							<p>Does this statement make you want to click the shiny blue button?</p>
+							<a href="#" class="button button-big button-icon button-icon-check">Yes it does</a>
+						</div>
+					<% } %>
+			</div>
+		</div>
+	</div>
+</div>

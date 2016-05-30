@@ -1,0 +1,39 @@
+
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+	<div class="main-wrapper-style2">
+		<div class="inner">
+			<div class="container">
+				<div class="row">
+					<div class="12u skel-cell-mainContent">
+						<div id="content">
+
+							<!-- Content -->
+						
+								<article>
+									<header class="major">
+
+										<span class="byline">Cliquez pour fair des cercles</span>
+									</header>
+
+    <body>
+        <canvas id="canvas1" width="500" height="500">
+           .
+        </canvas>
+    </body>
+<script>
+
+  
+function circle()
+{
+  var canvas = document.getElementById("canvas1"); 
+  var context = canvas.getContext("2d");
+  context.beginPath();
+  context.lineWidth="2";
+  context.arc(100, 100, 90, 0, 2 * Math.PI);
+  context.stroke();
+}
+circle();  
+</script>
+
+
